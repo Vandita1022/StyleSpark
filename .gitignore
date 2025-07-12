@@ -1,0 +1,21 @@
+# Data
+/data/images/
+/data/catalog_embeddings.pt
+/data/catalog_metadata.csv
+/data/styles.csv
+/data/color_palettes.json
+
+# Secrets
+.env
+
+# Python junk
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor files
+.vscode/
+.idea/
+
+# Node
+node_modules/
