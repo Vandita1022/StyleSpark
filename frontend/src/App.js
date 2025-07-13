@@ -1,10 +1,11 @@
 import React from 'react';
+import ImageUpload from './components/ImageUpload';
 
 function App() {
   return (
-    <div>
-      <h1>StyleSpark Frontend</h1>
-      <p>Upload your fashion item to find similar products!</p>
+    <div className="App">
+      <h1>StyleSpark</h1>
+      <ImageUpload />
     </div>
   );
 }

@@ -4,6 +4,7 @@
 /data/catalog_metadata.csv
 /data/styles.csv
 /data/color_palettes.json
+/data/image_filenames.csv
 
 # Secrets
 .env
@@ -22,3 +23,6 @@ node_modules/
 
 #models
 /models/
+
+/flask_app/static/
+/flask_app/uploads/
