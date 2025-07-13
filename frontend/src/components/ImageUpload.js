@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './ImageUpload.css';
 
 const ImageUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -31,8 +32,8 @@ const ImageUpload = () => {
       const response = await axios.post('http://127.0.0.1:5000/analyze', formData);
       const data = response.data;
 
-      setAnalysis(data.analysis); // ✅ FIXED KEY
-      setSimilarItems(data.recommendations); // ✅ FIXED KEY
+      setAnalysis(data.analysis);
+      setSimilarItems(data.recommendations);
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -42,18 +43,20 @@ const ImageUpload = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="image-upload">
       <h2>Upload and Analyze Image</h2>
 
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleAnalyze} disabled={loading}>
-        {loading ? 'Analyzing...' : 'Analyze'}
-      </button>
+      <div className="controls">
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleAnalyze} disabled={loading}>
+          {loading ? 'Analyzing...' : 'Analyze'}
+        </button>
+      </div>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {analysis && (
-        <div style={{ marginTop: '20px', border: '1px solid #ccc', padding: '10px' }}>
+        <div className="analysis">
           <h3>🧵 Analysis</h3>
           <p><strong>Caption:</strong> {analysis.caption}</p>
           <p><strong>Season:</strong> {analysis.season}</p>
@@ -62,16 +65,12 @@ const ImageUpload = () => {
           <p><strong>Product Name:</strong> {analysis.display_name}</p>
           <div>
             <strong>Color Palette:</strong>
-            <div style={{ display: 'flex', gap: '10px', marginTop: '5px' }}>
+            <div className="color-palette">
               {analysis.colors && analysis.colors.map((color, idx) => (
                 <div
                   key={idx}
-                  style={{
-                    backgroundColor: color,
-                    width: '30px',
-                    height: '30px',
-                    border: '1px solid #000'
-                  }}
+                  className="color-swatch"
+                  style={{ backgroundColor: color }}
                   title={color}
                 />
               ))}
@@ -81,24 +80,23 @@ const ImageUpload = () => {
       )}
 
       {similarItems.length > 0 && (
-        <div style={{ marginTop: '20px' }}>
+        <div className="recommendations">
           <h3>🎯 Recommended Items</h3>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+          <div className="recommendation-grid">
             {similarItems.map((item, idx) => (
-              <li key={idx} style={{ marginBottom: '15px', borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
+              <div key={idx} className="recommendation-card">
                 <img
                   src={`http://127.0.0.1:5000/static/catalog_images/${item.id}.jpg`}
                   alt={item.productDisplayName}
-                  style={{ width: '100px', height: '100px', objectFit: 'cover', marginBottom: '8px' }}
                 />
                 <p><strong>Product:</strong> {item.productDisplayName}</p>
                 <p><strong>Base Colour:</strong> {item.baseColour}</p>
                 <p><strong>Season:</strong> {item.season}</p>
                 <p><strong>Aesthetic Category:</strong> {item.aesthetic_category}</p>
-                <p><strong>Similarity Score:</strong> {item.similarity?.toFixed(4)}</p>
-              </li>
+                <p><strong>Similarity:</strong> {item.similarity?.toFixed(4)}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

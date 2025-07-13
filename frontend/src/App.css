@@ -1,0 +1,50 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.app-header h1 {
+  margin: 0;
+  color: #a78bfa;
+  font-size: 2rem;
+}
+
+.app-header nav {
+  display: flex;
+  gap: 20px;
+}
+
+.about-link {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.about-link:hover {
+  text-decoration: underline;
+}
+
+.app-main {
+  flex: 1;
+  padding: 20px;
+  background-color: #121212;
+}

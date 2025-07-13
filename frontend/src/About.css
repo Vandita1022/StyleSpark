@@ -1,0 +1,267 @@
+.about-container {
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 40px;
+  padding-top: 20px;
+}
+
+.about-header {
+  background-color: #161616;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.about-header h2 {
+  margin: 0;
+  color: #a78bfa;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.back-button:hover {
+  color: #d8b4fe;
+  text-decoration: underline;
+}
+
+.intro {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Cards container - grid layout */
+.cards-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Each card */
+.card {
+  background-color: #1a1a1a;
+  border-radius: 14px;
+  box-shadow: 0 8px 15px rgba(167, 139, 250, 0.3);
+  padding: 25px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 25px rgba(167, 139, 250, 0.7);
+}
+
+/* Card titles */
+.card h3 {
+  color: #a78bfa;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Reuse your current styles for container, header, intro, footer... */
+
+/* --- Team flashcards --- */
+.team-section {
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+.team-section h3 {
+  color: #a78bfa;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+}
+
+.team-members {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  width: 160px;
+  box-shadow: 0 6px 18px rgba(167, 139, 250, 0.35);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(167, 139, 250, 0.7);
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #a78bfa;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.team-card h4 {
+  margin: 8px 0 4px;
+  color: #d6bcfa;
+  font-weight: 600;
+}
+
+.team-card p {
+  margin: 0 0 12px;
+  color: #b5a9dd;
+  font-size: 0.9rem;
+}
+
+.btn-link {
+  text-decoration: none;
+  font-weight: 600;
+  background: #a78bfa;
+  color: #0f0f0f;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+  background: #d8b4fe;
+  color: #1a1a1a;
+}
+
+/* --- Tech stack pills --- */
+.tech-stack-section {
+  max-width: 700px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.tech-stack-section h3 {
+  color: #a78bfa;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+
+.tech-pill-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.tech-pill {
+  background: #3c2f7a;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #d6bcfa;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 8px rgba(167, 139, 250, 0.4);
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.tech-pill:hover {
+  background: #6d51d2;
+  cursor: default;
+}
+
+
+/* --- Project links as buttons --- */
+.project-links-section {
+  max-width: 700px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.project-links-section h3 {
+  color: #a78bfa;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.links-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-button {
+  background-color: #a78bfa;
+  color: #0f0f0f;
+  padding: 12px 24px;
+  font-weight: 700;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-button:hover {
+  background-color: #d8b4fe;
+  color: #1a1a1a;
+}
+
+/* --- Contact simple text --- */
+.contact-section {
+  max-width: 700px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  text-align: center;
+  color: #ccc;
+}
+
+.contact-section h3 {
+  color: #a78bfa;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.contact-section p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+/* Footer */
+.about-footer {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #a78bfa;
+  user-select: none;
+  padding-bottom: 40px;
+}
