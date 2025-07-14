@@ -133,7 +133,7 @@ StyleSpark/
 4. **📋 Results**: Returns curated results with preview, similarity score, and style tags
 
 ### Example Workflow
-![Ex_Workflow](assets/Ex_workflow.png)
+![Ex_Workflow](assets/Example.png)
 
 ## 🛠️ Tech Stack
 
