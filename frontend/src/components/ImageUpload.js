@@ -8,13 +8,23 @@ const ImageUpload = () => {
   const [similarItems, setSimilarItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [previewUrl, setPreviewUrl] = useState('');
+
 
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-    setAnalysis(null);
-    setSimilarItems([]);
-    setError('');
-  };
+  const file = e.target.files[0];
+  setSelectedFile(file);
+  setAnalysis(null);
+  setSimilarItems([]);
+  setError('');
+
+  if (file) {
+    setPreviewUrl(URL.createObjectURL(file));
+  } else {
+    setPreviewUrl('');
+  }
+};
+
 
   const handleAnalyze = async () => {
     if (!selectedFile) {
@@ -54,6 +64,13 @@ const ImageUpload = () => {
       </div>
 
       {error && <p className="error">{error}</p>}
+
+      {previewUrl && (
+        <div className="uploaded-preview">
+          <h3>🖼️ Uploaded Image</h3>
+          <img src={previewUrl} alt="Uploaded" className="uploaded-image" />
+        </div>
+      )}
 
       {analysis && (
         <div className="analysis">

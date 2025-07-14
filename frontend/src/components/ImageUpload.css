@@ -141,3 +141,15 @@
   font-size: 14px;
   color: #e0e0e0;
 }
+
+.uploaded-preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.uploaded-image {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
