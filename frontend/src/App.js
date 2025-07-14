@@ -9,7 +9,10 @@ function App() {
     <BrowserRouter>
       <div className="app-container">
         <header className="app-header">
-          <h1>StyleSpark</h1>
+          <div className="app-brand">
+            <img src="/favicon5.png" alt="StyleSpark Logo" className="brand-logo" />
+            <h1>StyleSpark</h1>
+          </div>
           <nav>
             <Link to="/about" className="about-link">About</Link>
           </nav>

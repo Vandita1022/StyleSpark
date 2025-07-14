@@ -52,12 +52,17 @@ function About() {
         </p>
       </section>
 
-      {/* Team Section - flashcard style */}
+      {/* Team Section - flashcard style with avatars */}
       <section className="team-section">
         <h3>Meet the Team</h3>
         <div className="team-members">
           {teamMembers.map(({ name, role, img, github }) => (
             <div key={name} className="team-card">
+              <div className="member-avatar">
+                <span className="avatar-initials">
+                  {name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
               <h4>{name}</h4>
               <p>{role}</p>
               <a href={github} target="_blank" rel="noopener noreferrer" className="btn-link">
@@ -67,6 +72,7 @@ function About() {
           ))}
         </div>
       </section>
+
 
       {/* Tech Stack - pill badges */}
       <section className="tech-stack-section">

@@ -115,7 +115,7 @@ const ImageUpload = () => {
         React.createElement(
           'h3',
           { className: 'section-title' },
-          React.createElement('span', { className: 'section-icon' }, '🖼️'),
+          React.createElement('span', { className: 'section-icon' }, ),
           'Your Image'
         ),
         React.createElement(
@@ -136,7 +136,7 @@ const ImageUpload = () => {
         React.createElement(
           'h3',
           { className: 'section-title' },
-          React.createElement('span', { className: 'section-icon' }, '🧵'),
+          React.createElement('span', { className: 'section-icon' }, ),
           'Style Analysis'
         ),
         React.createElement(

@@ -83,3 +83,17 @@ a {
     text-shadow: 0 0 12px #c4b5fdcc;
   }
 }
+
+/* Brand area inside header */
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo image styling */
+.brand-logo {
+  width: 32px;          /* Or whatever size you want */
+  height: 32px;
+  object-fit: contain;
+}

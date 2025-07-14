@@ -265,3 +265,21 @@
   user-select: none;
   padding-bottom: 40px;
 }
+
+.member-avatar {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #a78bfa, #c084fc);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
+}
+
+.avatar-initials {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
