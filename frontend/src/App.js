@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import ImageUpload from './components/ImageUpload';
 import About from './About';
 import './App.css';
+import MoodboardExplorer from './components/MoodboardExplorer';
+
+
 
 function App() {
   return (
