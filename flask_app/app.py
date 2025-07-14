@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
@@ -13,13 +13,25 @@ UPLOAD_FOLDER = "uploads"
 STATIC_IMAGE_FOLDER = os.path.join("..", "data", "images")  # for /static/catalog_images
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Initialize Flask
-app = Flask(__name__)
+# ✅ ONE app initialization with correct folders
+app = Flask(
+    __name__,
+    static_folder='react_build/static',
+    template_folder='react_build'
+)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 CORS(app)
 
 # ---------------------------------------------
-# Endpoint: Analyze + Recommend (CLIP only)
+# ✅ Serve React Frontend
+# ---------------------------------------------
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template('index.html')
+
+# ---------------------------------------------
+# ✅ Endpoint: Analyze + Recommend (CLIP only)
 # ---------------------------------------------
 @app.route("/analyze", methods=["POST"])
 def analyze_image():
@@ -36,7 +48,7 @@ def analyze_image():
     # Step 1: Process the image
     result = process_new_image(image_path)
 
-    # Step 2: Recommend similar items using CLIP only (no filters)
+    # Step 2: Recommend similar items
     similar_items = find_similar_items(
         uploaded_result=result,
         top_k=12
@@ -58,7 +70,7 @@ def analyze_image():
     return jsonify(response)
 
 # ---------------------------------------------
-# Endpoint: Outfit Generator
+# ✅ Endpoint: Outfit Generator
 # ---------------------------------------------
 @app.route("/generate-outfits", methods=["POST"])
 def generate_outfits():
@@ -71,21 +83,14 @@ def generate_outfits():
     return jsonify({"outfits": outfits})
 
 # ---------------------------------------------
-# Serve Catalog Images (Optional)
+# ✅ Serve Catalog Images
 # ---------------------------------------------
 @app.route("/static/catalog_images/<path:filename>")
 def serve_catalog_image(filename):
     return send_from_directory(STATIC_IMAGE_FOLDER, filename)
 
 # ---------------------------------------------
-# Health Check
-# ---------------------------------------------
-@app.route("/", methods=["GET"])
-def home():
-    return "🧵 StyleSpark Flask API is running!"
-
-# ---------------------------------------------
-# Run Server
+# ✅ Run Server
 # ---------------------------------------------
 if __name__ == "__main__":
     app.run(debug=True)
