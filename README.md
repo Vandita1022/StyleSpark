@@ -122,6 +122,7 @@ StyleSpark/
 ---
 
 ## 📸 How It Works
+![Workflow](assets/workflow.jpg)
 
 1. **📤 Upload**: Upload any outfit image from your device
 2. **🔍 Analysis**: Backend extracts:
@@ -131,8 +132,8 @@ StyleSpark/
 3. **🎯 Matching**: Finds visually similar items in the dataset using cosine similarity
 4. **📋 Results**: Returns curated results with preview, similarity score, and style tags
 
-### Workflow
-![Workflow](assets/workflow.jpg)
+### Example Workflow
+![Ex_Workflow](assets/Ex_workflow.jpg)
 
 ## 🛠️ Tech Stack
 
@@ -151,36 +152,6 @@ StyleSpark/
 - **~44,000 curated fashion items** with metadata
 - **Precomputed CLIP embeddings** for lightning-fast similarity matching
 - **Cleaned and structured metadata** for accurate recommendations
-
----
-
-## 💡 Future Improvements
-
-- [ ] **Advanced Filters**: Season, gender, subcategory dropdowns
-- [ ] **Outfit Matching**: Cross-category recommendations (tops + bottoms)
-- [ ] **Cloud Deployment**: HuggingFace Spaces / Render / Vercel
-- [ ] **User Accounts**: Save favorites and learn preferences
-- [ ] **Style Rating System**: Community-driven style scoring
-- [ ] **Mobile App**: React Native companion app
-- [ ] **Social Features**: Share and discover looks
-
----
-
-## 🚀 Deployment
-
-### Local Development
-```bash
-# Backend
-cd flask_app && python app.py
-
-# Frontend (new terminal)
-cd frontend && npm run dev
-```
-
-### Production Deployment
-- **Frontend**: Deploy to Vercel/Netlify
-- **Backend**: Deploy to Render/Railway/Heroku
-- **Database**: Add PostgreSQL for user data
 
 ---
 
