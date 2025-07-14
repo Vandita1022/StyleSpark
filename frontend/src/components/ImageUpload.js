@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ImageUpload.css';
 
@@ -10,21 +10,19 @@ const ImageUpload = () => {
   const [error, setError] = useState('');
   const [previewUrl, setPreviewUrl] = useState('');
 
-
   const handleFileChange = (e) => {
-  const file = e.target.files[0];
-  setSelectedFile(file);
-  setAnalysis(null);
-  setSimilarItems([]);
-  setError('');
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setAnalysis(null);
+    setSimilarItems([]);
+    setError('');
 
-  if (file) {
-    setPreviewUrl(URL.createObjectURL(file));
-  } else {
-    setPreviewUrl('');
-  }
-};
-
+    if (file) {
+      setPreviewUrl(URL.createObjectURL(file));
+    } else {
+      setPreviewUrl('');
+    }
+  };
 
   const handleAnalyze = async () => {
     if (!selectedFile) {
@@ -52,70 +50,193 @@ const ImageUpload = () => {
     }
   };
 
-  return (
-    <div className="image-upload">
-      <h2>Upload and Analyze Image</h2>
-
-      <div className="controls">
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={handleAnalyze} disabled={loading}>
-          {loading ? 'Analyzing...' : 'Analyze'}
-        </button>
-      </div>
-
-      {error && <p className="error">{error}</p>}
-
-      {previewUrl && (
-        <div className="uploaded-preview">
-          <h3>🖼️ Uploaded Image</h3>
-          <img src={previewUrl} alt="Uploaded" className="uploaded-image" />
-        </div>
-      )}
-
-      {analysis && (
-        <div className="analysis">
-          <h3>🧵 Analysis</h3>
-          <p><strong>Caption:</strong> {analysis.caption}</p>
-          <p><strong>Season:</strong> {analysis.season}</p>
-          <p><strong>Aesthetic Category:</strong> {analysis.aesthetic_category}</p>
-          <p><strong>Aesthetic Vibe:</strong> {analysis.aesthetic_vibe}</p>
-          <p><strong>Product Name:</strong> {analysis.display_name}</p>
-          <div>
-            <strong>Color Palette:</strong>
-            <div className="color-palette">
-              {analysis.colors && analysis.colors.map((color, idx) => (
-                <div
-                  key={idx}
-                  className="color-swatch"
-                  style={{ backgroundColor: color }}
-                  title={color}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {similarItems.length > 0 && (
-        <div className="recommendations">
-          <h3>🎯 Recommended Items</h3>
-          <div className="recommendation-grid">
-            {similarItems.map((item, idx) => (
-              <div key={idx} className="recommendation-card">
-                <img
-                  src={`http://127.0.0.1:5000/static/catalog_images/${item.id}.jpg`}
-                  alt={item.productDisplayName}
-                />
-                <p><strong>Product:</strong> {item.productDisplayName}</p>
-                <p><strong>Base Colour:</strong> {item.baseColour}</p>
-                <p><strong>Season:</strong> {item.season}</p>
-                <p><strong>Similarity:</strong> {item.similarity?.toFixed(4)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+  return React.createElement(
+    'div',
+    { className: 'image-upload-container' },
+    // Header
+    React.createElement(
+      'div',
+      { className: 'upload-header' },
+      React.createElement('h1', { className: 'main-title' }, 'AI Fashion Analyzer'),
+      React.createElement('p', { className: 'subtitle' }, 'Upload an image to discover your style and get personalized recommendations')
+    ),
+    // Upload Section
+    React.createElement(
+      'div',
+      { className: 'upload-section' },
+      React.createElement(
+        'div',
+        { className: 'file-input-wrapper' },
+        React.createElement('input', {
+          type: 'file',
+          id: 'file-input',
+          onChange: handleFileChange,
+          accept: 'image/*',
+          className: 'file-input'
+        }),
+        React.createElement(
+          'label',
+          { htmlFor: 'file-input', className: 'file-input-label' },
+          React.createElement('span', { className: 'upload-icon' }, '📸'),
+          React.createElement('span', { className: 'upload-text' }, selectedFile ? selectedFile.name : 'Choose an image')
+        )
+      ),
+      React.createElement(
+        'button',
+        {
+          onClick: handleAnalyze,
+          disabled: loading || !selectedFile,
+          className: `analyze-button ${loading ? 'loading' : ''}`
+        },
+        loading
+          ? [
+              React.createElement('span', { key: 'spinner', className: 'spinner' }),
+              'Analyzing...'
+            ]
+          : [
+              React.createElement('span', { key: 'icon', className: 'analyze-icon' }, '✨'),
+              'Analyze Style'
+            ]
+      )
+    ),
+    // Error
+    error &&
+      React.createElement(
+        'div',
+        { className: 'error-message' },
+        React.createElement('span', { className: 'error-icon' }, '⚠️'),
+        error
+      ),
+    // Preview
+    previewUrl &&
+      React.createElement(
+        'div',
+        { className: 'preview-section' },
+        React.createElement(
+          'h3',
+          { className: 'section-title' },
+          React.createElement('span', { className: 'section-icon' }, '🖼️'),
+          'Your Image'
+        ),
+        React.createElement(
+          'div',
+          { className: 'image-preview' },
+          React.createElement('img', {
+            src: previewUrl,
+            alt: 'Uploaded preview',
+            className: 'preview-image'
+          })
+        )
+      ),
+    // Analysis
+    analysis &&
+      React.createElement(
+        'div',
+        { className: 'analysis-section' },
+        React.createElement(
+          'h3',
+          { className: 'section-title' },
+          React.createElement('span', { className: 'section-icon' }, '🧵'),
+          'Style Analysis'
+        ),
+        React.createElement(
+          'div',
+          { className: 'analysis-grid' },
+          ['display_name', 'season', 'aesthetic_category', 'aesthetic_vibe'].map((key) =>
+            React.createElement(
+              'div',
+              { key, className: 'analysis-card' },
+              React.createElement('h4', null, key.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())),
+              React.createElement('p', null, analysis[key])
+            )
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'description-card' },
+          React.createElement('h4', null, 'Description'),
+          React.createElement('p', null, analysis.caption)
+        ),
+        analysis.colors &&
+          React.createElement(
+            'div',
+            { className: 'colors-section' },
+            React.createElement('h4', null, 'Color Palette'),
+            React.createElement(
+              'div',
+              { className: 'color-palette' },
+              analysis.colors.map((color, idx) =>
+                React.createElement(
+                  'div',
+                  {
+                    key: idx,
+                    className: 'color-swatch',
+                    style: { backgroundColor: color },
+                    title: color
+                  },
+                  React.createElement('span', { className: 'color-code' }, color)
+                )
+              )
+            )
+          )
+      ),
+    // Recommendations
+    similarItems.length > 0 &&
+      React.createElement(
+        'div',
+        { className: 'recommendations-section' },
+        React.createElement(
+          'h3',
+          { className: 'section-title' },
+          React.createElement('span', { className: 'section-icon' }, '🎯'),
+          'Recommended For You'
+        ),
+        React.createElement(
+          'div',
+          { className: 'recommendations-grid' },
+          similarItems.map((item, idx) =>
+            React.createElement(
+              'div',
+              { key: idx, className: 'recommendation-card' },
+              React.createElement(
+                'div',
+                { className: 'card-image-wrapper' },
+                React.createElement('img', {
+                  src: `http://127.0.0.1:5000/static/catalog_images/${item.id}.jpg`,
+                  alt: item.productDisplayName,
+                  className: 'card-image'
+                }),
+                React.createElement(
+                  'div',
+                  { className: 'similarity-badge' },
+                  `${(item.similarity * 100).toFixed(1)}% match`
+                )
+              ),
+              React.createElement(
+                'div',
+                { className: 'card-content' },
+                React.createElement('h4', { className: 'card-title' }, item.productDisplayName),
+                React.createElement(
+                  'div',
+                  { className: 'card-details' },
+                  React.createElement(
+                    'span',
+                    { className: 'detail-item' },
+                    React.createElement('span', { className: 'detail-label' }, 'Color:'),
+                    React.createElement('span', { className: 'detail-value' }, item.baseColour)
+                  ),
+                  React.createElement(
+                    'span',
+                    { className: 'detail-item' },
+                    React.createElement('span', { className: 'detail-label' }, 'Season:'),
+                    React.createElement('span', { className: 'detail-value' }, item.season)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
   );
 };
 
