@@ -92,7 +92,6 @@ const ImageUpload = () => {
                 <p><strong>Product:</strong> {item.productDisplayName}</p>
                 <p><strong>Base Colour:</strong> {item.baseColour}</p>
                 <p><strong>Season:</strong> {item.season}</p>
-                <p><strong>Aesthetic Category:</strong> {item.aesthetic_category}</p>
                 <p><strong>Similarity:</strong> {item.similarity?.toFixed(4)}</p>
               </div>
             ))}

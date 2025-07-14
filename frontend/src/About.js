@@ -6,20 +6,17 @@ const teamMembers = [
   {
     name: 'Vandita Gupta',
     role: 'Full Stack Developer',
-    img: '/images/vandita.jpg',
-    github: 'https://github.com/vanditagupta',
+    github: 'https://github.com/Vandita1022',
   },
   {
-    name: 'Aarav Sharma',
+    name: 'Bhumi Mittal',
     role: 'AI Engineer',
-    img: '/images/aarav.jpg',
-    github: 'https://github.com/aaravsharma',
+    github: 'https://github.com/Mittalbhumi',
   },
   {
-    name: 'Meera Singh',
+    name: 'Radhika Agarwal',
     role: 'UI/UX Designer',
-    img: '/images/meera.jpg',
-    github: 'https://github.com/meerasingh',
+    github: 'https://github.com/radhika101205',
   },
 ];
 
@@ -28,7 +25,7 @@ const techStack = ['React', 'Flask', 'Python', 'TensorFlow', 'Tailwind CSS'];
 const projectLinks = [
   {
     label: 'Github Repository',
-    url: 'https://github.com/vanditagupta/stylespark-frontend',
+    url: 'https://github.com/Vandita1022/StyleSpark',
   },
   { label: 'Live Demo', url: 'https://stylespark.app' },
 ];
@@ -102,12 +99,11 @@ function About() {
       {/* Contact - simple text */}
       <section className="contact-section">
         <h3>Get In Touch</h3>
-        <p>Email: <a href="mailto:vandita@example.com" className="btn-link">vandita@example.com</a></p>
-        <p>Twitter: <a href="https://twitter.com/vanditagupta" target="_blank" rel="noopener noreferrer" className="btn-link">@vanditagupta</a></p>
+        <p>Email: <a href="mailto:vandita.gupta2609@gmail.com" className="btn-link">vandita.gupta2609@gmail.com</a></p>
       </section>
 
       <footer className="about-footer">
-        Built with <span role="img" aria-label="heart">❤️</span> by Vandita Gupta.
+        Built with <span role="img" aria-label="heart">❤️</span> by Team StyleSpark.
       </footer>
     </div>
   );
