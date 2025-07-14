@@ -131,19 +131,8 @@ StyleSpark/
 3. **🎯 Matching**: Finds visually similar items in the dataset using cosine similarity
 4. **📋 Results**: Returns curated results with preview, similarity score, and style tags
 
-### 🧪 Example Workflow
-
-```
-Input: Red floral dress image
-↓
-AI Processing: "A red floral dress with short sleeves"
-↓
-Color Analysis: #D32F2F, #FF6B6B, #4CAF50
-↓
-Output: 12 similar red dresses, floral patterns, seasonal tags
-```
-
----
+### Workflow
+![Workflow](assets/workflow.png)
 
 ## 🛠️ Tech Stack
 
