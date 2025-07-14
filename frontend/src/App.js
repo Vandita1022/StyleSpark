@@ -1,4 +1,6 @@
 import React from 'react';
+import MoodboardExplorer from './components/MoodboardExplorer';
+
 
 function App() {
   return (
