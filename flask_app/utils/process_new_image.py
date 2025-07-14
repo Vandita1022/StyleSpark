@@ -19,14 +19,14 @@ clip_model_path = os.path.join(PROJECT_ROOT, "models", "clip-vit-base-patch32", 
 
 # ---------------- LOAD MODELS ---------------- #
 print("✅ Loading BLIP...")
-blip_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+blip_processor = BlipProcessor.from_pretrained(blip_model_path)
+blip_model = BlipForConditionalGeneration.from_pretrained(blip_model_path).to(DEVICE)
 print("✅ BLIP model loaded!")
 
 print("✅ Loading CLIP...")
-clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
-print("✅ CLIP model loaded")
+clip_model = CLIPModel.from_pretrained(clip_model_path).to(DEVICE)
+clip_processor = CLIPProcessor.from_pretrained(clip_model_path)
+print("✅ CLIP model loaded on", DEVICE)
 
 # ---------------- COLOR NORMALIZER ---------------- #
 def normalize_color(text):
