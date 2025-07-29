@@ -1,4 +1,4 @@
-# 🧵 StyleSpark – AI-Powered Fashion Recommender
+# 🧵 StyleSpark – Upload a Look, Find the Vibe
 
 <div align="center">
   <img src="https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge&logo=artificial-intelligence" alt="AI Powered" />
